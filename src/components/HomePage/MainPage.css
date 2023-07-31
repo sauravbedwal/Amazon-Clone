@@ -1,0 +1,20 @@
+.mainpage{
+    height: 230vh;
+    background-repeat: no-repeat;
+    background-color: #d8f2f0;
+}
+
+  /* For screens with a width of 768 pixels or less (mobile devices) */
+  @media (max-width: 768px) {
+    .mainpage {
+      height: 480vh; 
+    }
+  }
+/* For screens with a width between 768px and 1024px (tablet devices) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .mainpage {
+      height: 270vh; 
+    }
+
+  }
+  

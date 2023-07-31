@@ -1,0 +1,69 @@
+.AdvertisementOne__main{
+    height: 60vh;
+    width: 22vw;
+    background: white;
+    margin: 1%;
+    display: grid;
+    grid-template-columns: auto;
+    cursor: pointer;
+}
+
+.AdvertisementOne__header{
+    font-size: 21px;
+    line-height: 27px;
+    font-weight: bold;
+    padding: 15px;
+}
+
+.AdvertisementOne__body{
+    padding: 15px;
+}
+
+.AdvertisementOne__footer{
+    padding: 15px;
+}
+
+
+  
+  /* For screens with a width of 768 pixels or less (mobile devices) */
+  @media (max-width: 768px) {
+    .AdvertisementOne__main {
+      height: auto;
+      width: 100%;
+      margin: 5px 0;
+      grid-template-columns: 1fr;
+    }
+  
+    .AdvertisementOne__header {
+      font-size: 18px;
+    }
+  
+    .AdvertisementOne__body {
+      padding: 10px;
+    }
+  
+    .AdvertisementOne__footer {
+      padding: 8px 15px;
+    }
+  }
+
+
+/* For screens with a width between 768px and 1024px (tablet devices) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .AdvertisementOne__main {
+      height: 40vh;
+      width: 30vw;
+    }
+  
+    .AdvertisementOne__header {
+      font-size: 20px;
+    }
+  
+    .AdvertisementOne__body {
+      padding: 10px;
+    }
+  
+    .AdvertisementOne__footer {
+      padding: 8px 15px;
+    }
+  }

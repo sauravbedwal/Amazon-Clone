@@ -1,0 +1,287 @@
+.navbar__component{
+    width: 100vw;
+    height: 8vh;
+    background-color: #131921;
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+.navbar__logo{
+    background: url('https://ik.imagekit.io/amazon1122/amazon-image/amazon-image/sprite_350x.png?updatedAt=1689420292626') no-repeat -9px -50px;
+	width: 98px;
+	height: 31px;
+    margin: 1%;
+    cursor: pointer;
+}
+
+.navbar__locator {
+    display: flex;
+    align-items: center;
+    margin-left: 0.5%;
+    margin: 15px 0px;
+    margin-right: 20px;
+}
+
+.navbar__location{
+    color: white;
+    font-weight: bold;
+    margin-left: 5px;
+}
+.navbar__locatorImage{
+    background: url('https://ik.imagekit.io/amazon1122/amazon-image/amazon-image/sprite_350x.png?updatedAt=1689420292626') no-repeat -70px -305px;
+	width: 19px;
+	height: 22px;
+}
+
+
+.navbar__signin{
+    width: 9vw;
+    margin-left: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    cursor: pointer;
+}
+
+.navbar__returns{
+    width: 6vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 1.5%;
+}
+
+.navbar__cart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar__text{
+    color: white;
+
+}
+
+.cart__image{
+    background: url('https://ik.imagekit.io/amazon1122/amazon-image/amazon-image/sprite_350x.png?updatedAt=1689420292626') no-repeat -217px -336px;
+	width: 43px;
+	height: 30px;
+}
+
+.navbar__text__cart{
+    margin-top: 15%;
+    font-weight: bold;
+    margin-left: -5px;
+}
+
+.cart__item{
+    font-weight: bold;
+    position: relative;
+    left: -22px;
+    bottom: 5px;
+    color: #F08805;
+}
+
+.navbar__language{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2%;
+}
+
+.navbar__language img{
+    width: auto;
+    height: 1.7vh;
+}
+
+.navbar__language__select{
+    background-color: #131921;
+    color: white;
+    border: none;
+    width: 3.8vw;
+height: 5vh;
+}
+
+
+.navbar__footer{
+    height: 4.7vh;
+    color: white;
+    background-color: #22303E;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8vh;
+    padding-left: 10px;
+}
+
+.navbar_footer_elems{
+width: 70%;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+align-items: center;
+}
+
+.navbar__footer__text{
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.navbar__footer__image img{
+    height: 5vh;
+
+}
+
+
+
+.hamburger{
+    display:none;
+}
+.navbar__language2 img{
+ display: none;
+}
+
+
+@media screen and (max-width: 768px) {
+
+  
+    .navbar__logo{
+        background: url('https://ik.imagekit.io/amazonzlone15/amazon-image/sprite_350x.png?updatedAt=1689420715250') no-repeat -9px -50px;
+        width: 98px;
+        height: 31px;
+        margin-top: 20px ; 
+        cursor: pointer;
+    }
+
+    .hamburger{
+        display:block;
+        color: #F08805;
+        margin-left: 30px;
+        margin-top: 20px;
+    }
+    .navbar__language{
+        display: none;
+    }
+    .navbar__cart{
+        display: none;
+    }
+    .navbar__returns{
+        display: none;
+    }
+    .navbar__signin{
+        display: none;
+    }
+    .navbar__locator{
+        display: none;
+    }
+    .navbar__footer{
+        display: none;
+    }
+
+    .navbar__language2 img{
+        height: 2px;
+        width: 2px;
+    }
+
+    .navbar__signin2{
+        margin-top: 75px;
+    }
+    .navbar__cart2{
+        display: flex;
+margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    }
+    .cart__image2{
+        background: url('https://ik.imagekit.io/amazonzlone15/amazon-image/sprite_350x.png?updatedAt=1689420715250') no-repeat -217px -336px;
+        width: 43px;
+        height: 30px;
+    }
+    .cart__item2{
+        font-weight: bold;
+        position: relative;
+        left: -22px;
+        bottom: 5px;
+        color: #F08805;
+    }
+    .navbar__text__cart2{
+        font-weight: bold;
+        margin-left: -5px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .navbar__logo{
+        background: url('https://ik.imagekit.io/amazonzlone15/amazon-image/sprite_350x.png?updatedAt=1689420715250') no-repeat -9px -50px;
+        width: 98px;
+        height: 31px;
+        margin-top: 35px ;
+        margin-left: 20px; 
+       cursor: pointer;
+    }
+
+    .hamburger{
+        display:block;
+        color: #F08805;
+        margin-left: 80px;
+        margin-top: 35px;
+    }
+    .navbar__language{
+        display: none;
+    }
+    .navbar__cart{
+        display: none;
+    }
+    .navbar__returns{
+        display: none;
+    }
+    .navbar__signin{
+        display: none;
+    }
+    .navbar__locator{
+        display: none;
+    }
+    .navbar__footer{
+        display: none;
+    }
+    .navbar__language2 img{
+        height: 2px;
+        width: 2px;
+    }
+
+    .navbar__signin2{
+        margin-top: 95px;
+        margin-left: 100px;
+    }
+    .navbar__cart2{
+        display: flex;
+    margin-top: 80px;
+    margin-left: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    }
+    .cart__image2{
+        background: url('https://ik.imagekit.io/amazonzlone15/amazon-image/sprite_350x.png?updatedAt=1689420715250') no-repeat -217px -336px;
+        width: 43px;
+        height: 30px;
+    }
+    .cart__item2{
+        font-weight: bold;
+        position: relative;
+        left: -22px;
+        bottom: 5px;
+        color: #F08805;
+    }
+    .navbar__text__cart2{
+        font-weight: bold;
+        margin-left: -5px;
+    }
+}

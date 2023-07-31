@@ -1,0 +1,70 @@
+.advertisementBelt_main{
+    width: 94vw;
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 1%;
+    cursor: pointer;
+    /* margin-top: 50px; */
+}
+.advertisementBelt_header{
+    font-size: 21px;
+    line-height: 27px;
+font-weight: bold;
+    padding: 15px;
+}
+.advertisementBelt_body{
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5%;
+    
+}
+.advertisementBelt_body img{
+    height: 25vh;
+    width: auto;
+}
+
+/* For mobile devices */
+@media screen and (max-width: 600px) {
+    .advertisementBelt_main {
+      height: 470px;
+    }
+  
+    .advertisementBelt_header {
+      font-size: 18px;
+      padding: 10px;
+    }
+  
+    .advertisementBelt_body {
+      flex-wrap: wrap;
+    }
+  
+    .advertisementBelt_body img {
+      height: 20vh;
+      width: 48%;
+      margin: 0.5%;
+    }
+  }
+
+  /* For tablet devices */
+@media screen and (max-width: 1024px) {
+  .advertisementBelt_main {
+    height: auto;
+  }
+
+  .advertisementBelt_header {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .advertisementBelt_body {
+    flex-wrap: wrap;
+  }
+
+  .advertisementBelt_body img {
+    height: 15vh;
+    width: 48%;
+    margin: 0.5%;
+  }
+}

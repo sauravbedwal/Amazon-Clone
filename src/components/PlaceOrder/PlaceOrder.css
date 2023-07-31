@@ -1,0 +1,146 @@
+.placeorder__image{
+    height: 400px;
+    margin: 100px 150px;
+    width: 350px;
+}
+
+.placeorder__description{
+    margin-top: 50px;
+}
+
+.textgap{
+    margin: 10px;
+}
+
+.pricetag{
+    font-size: 24px;
+    color: #B12704 ;
+}
+
+.placeorder__order{
+    margin-top: 50px;
+    width: 80%;
+    height: 50%;
+    margin-left: 20px;
+    padding: 15px;
+    
+}
+
+.placeorder__button{
+    width: 230px;
+    height: 40px;
+    border-radius: 40px;
+    margin: 5px;
+    border: 0px;
+    color: black;
+    cursor: pointer;
+}
+
+.buynow{
+    background-color: #FFD712;
+}
+
+.addtocart{
+    margin-top: 30px;
+    background-color: #FFA41B;
+}
+
+.placeorder_icons{
+    display: flex;
+    justify-content: space-between;
+}
+.placeorder_icons span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.placeorder_icons img{
+    height: 5vh;
+}
+.placeorder_icons p{
+    font-size: 12px;
+    color: #1d748c;
+    margin: 0;
+}
+
+.placeorder__list{
+margin-left: 10px;
+}
+
+.placeorder__list li{
+    margin: 10px;
+}
+
+
+/* Mobile Media Query */
+@media screen and (max-width: 768px) {
+    .placeorder__image {
+      height: 250px;
+      width: 180px;
+      margin: 20px 95px;
+    }
+    .placeorder__description {
+      margin-top: 10px;
+      text-align: center;
+    }
+    .placeorder__order {
+      margin-top: -60px;
+      width: 90%;
+      height: 175px;
+      margin-left: 20px;
+      padding: 10px;
+    }
+    .placeorder__button {
+      width: 150px;
+      height: 30px;
+      border-radius: 30px;
+      margin: 5px;
+      font-size: 12px;
+    }
+    .placeorder__icons img {
+      height: 3.5vh;
+    }
+    .placeorder__icons p {
+      font-size: 10px;
+    }
+  }
+
+/* Tablet Media Query */
+@media (min-width: 768px) and (max-width: 1024px)  {
+    .placeorder__image {
+      height: 350px;
+      width: 250px;
+      margin: 50px 40px;
+    }
+    .placeorder__description {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .placeorder__order {
+      margin-top: 20px;
+      width: 90%;
+      height: 30%;
+      margin: 0 auto;
+      padding: 15px;
+    }
+    .placeorder__button {
+      width: 130px;
+      height: 35px;
+      border-radius: 35px;
+      margin: 5px;
+    }
+    .placeorder__icons img {
+      height: 4vh;
+    }
+    .placeorder__icons p {
+      font-size: 11px;
+    }
+    .placeorder__list li {
+      margin: 10px;
+      text-align: left;
+    }
+  }
+  
+  
+  

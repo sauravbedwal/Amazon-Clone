@@ -1,0 +1,56 @@
+.main{
+	height: 100vh;
+	width: 100%;
+	margin: auto;
+	position: relative;
+	overflow: hidden;
+}
+.slide{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transition: all 1s ease-in;
+}
+  .main {
+    display: flex;
+    transition: transform 1s ease-in-out;
+  }
+  .slide {
+    width: 100%;
+    height: 100vh; /* Adjust the height as needed */
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+  }
+
+
+/* For screens with a width of 768 pixels or less (mobile devices) */
+@media (max-width: 768px) {
+
+  .main{
+    flex-direction: column;
+    height: 60vh;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide {
+    height: 40vh;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .main{
+    flex-direction: column;
+    height: 60vh;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide {
+    height: 45vh;
+  }
+}
