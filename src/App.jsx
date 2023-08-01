@@ -22,6 +22,7 @@ function App() {
           <Routes>
             <Route path="/log-In" element={<LogIn />} />
             <Route path="/sign-Up" element={<SignUp />} />
+            <Route path="/address-page" element={<AddressPage />} />
             <Route
               path="/"
               element={
@@ -54,14 +55,7 @@ function App() {
                 </Layout>
               }
             />
-            <Route
-              path="/address-page"
-              element={
-                <Layout>
-                  <AddressPage />
-                </Layout>
-              }
-            />
+
             <Route
               path="*"
               element={
