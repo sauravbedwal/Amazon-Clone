@@ -205,7 +205,7 @@ const NavBar = () => {
             display: "flex",
             flexDirection: "row",
             height: "160px",
-            width: "auto",
+            width: "100%",
             backgroundColor: "#131921",
             color: "white",
             zIndex: "1",
