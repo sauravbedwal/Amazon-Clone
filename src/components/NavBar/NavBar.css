@@ -160,7 +160,7 @@ align-items: center;
 
   
     .navbar__component{
-        width: 100vw;
+        width: 100%;
     }
     .navbar__logo{
         background: url('https://ik.imagekit.io/amazonzlone15/amazon-image/sprite_350x.png?updatedAt=1689420715250') no-repeat -9px -50px;
