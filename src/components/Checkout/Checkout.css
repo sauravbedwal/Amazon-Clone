@@ -13,7 +13,7 @@
 .textgap{
     margin: 5px;
 }
-
+ 
 .placeorder__button{
     width: 230px;
     height: 40px;
@@ -61,6 +61,11 @@
     align-items: center;
     margin: -10px 8px;
 }
+
+.placeorder__div{
+  margin: 25px 0px;
+}
+
 /* Mobile styles for screens less than 600px wide */
 @media (max-width: 600px) {
     .checkout__container {
@@ -83,10 +88,17 @@
       height: 45px;
       font-size: 18px;
     }
+
+    .proceedToBuyBox{
+      margin: 20px 40px;
+    }
+
+    .placeorder__div{
+      margin: 25px 35px;
+    }
+    
   }
-  .proceedToBuyBox{
-    margin: 20px 40px;
-  }
+  
   
   @media (min-width: 768px) and (max-width: 1024px) {
   
@@ -99,5 +111,9 @@
   
     .proceedToBuyBox{
       margin: 20px 250px;
+    }
+
+    .placeorder__div{
+      margin: 25px 45px;
     }
   }
