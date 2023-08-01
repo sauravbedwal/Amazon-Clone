@@ -65,7 +65,14 @@ const NavBar = () => {
         <div className="navbar__logo" onClick={amazonLogoClick}></div>
         <div className="navbar__locator">
           <div className="navbar__locatorImage"></div>
-          <div className="navbar__location">Delhi</div>
+          <select className="navbar_location">
+            <option>Delhi</option>
+            <option>Mumbai</option>
+            <option>Noida</option>
+            <option>Goa</option>
+            <option>Chennai</option>
+            <option>Kanpur</option>
+          </select>
         </div>
         {/* Search buttton*/}
         <Search />
@@ -197,7 +204,7 @@ const NavBar = () => {
           style={{
             display: "flex",
             flexDirection: "row",
-            height: "140px",
+            height: "160px",
             width: "auto",
             backgroundColor: "#131921",
             color: "white",
