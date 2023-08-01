@@ -1,85 +1,165 @@
-.navbar__searchox{
-    width: 42vw;    
-    height: 5vh;
-    font-size: medium;
-    padding: 2%;
-}
-.navbar__searchicon{
-    background: url('https://ik.imagekit.io/amazon1122/amazon-image/amazon-image/sprite_350x.png?updatedAt=1689420292626') no-repeat -9px -289px;
-
-    margin: 10px;
-    width: 23px;
-    height: 23px;
-    cursor: pointer;
-}
-.dropdown_div{
-    margin-left: 5%;
-}
-.navbar__searchcomponent{
+.search-component {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.navbar__searchboxdiv{
+
+.searchBox {
+    width: 40vw;
+    height: 6vh;
+    font-size: medium;
+    padding: 2%;
+    cursor: pointer;
+}
+
+.searchIcon {
+    background: url('https://ik.imagekit.io/amazonzlone15/amazon-image/sprite_350x.png?updatedAt=1689420715250') no-repeat -9px -289px;
+    width: 23px;
+    height: 23px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.searchbox-div {
     background-color: #FEBE68;
-    height: 5vh;
+    /* height: 38px; */
+    height: 5.94vh;
     width: 48px;
     border-radius: 0px 5px 5px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* margin-top: 8px; */
+    /* margin-top: 1.3%; */
 }
 
-.nav__dropdown{
+.dropdown-div {
+    /* margin-top: 1.3%; */
+    margin-left: 2%;
+}
+
+.dropdown {
+    /* height: 44px; */
+    height: 6vh;
     width: 3.7vw;
-height: 5vh;
-background-color: #e6e5e5;
-border-radius: 5px 0px 0px 5px;
-text-align-last: center;
-
+    /* margin-top: 10px; */
+    background-color: #e6e5e5;
+    border-radius: 5px 0px 0px 5px;
+    text-align-last: center;
 }
 
+.listy {
+    position: absolute !important;
+    width: 45vw;
+    margin-top: 40px;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+}
 
+.listy li {
+    color: #000000;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.listy li:hover {
+    background-color: #e6e5e5;
+}
+
+/* ===================================================================================*/
 @media (max-width: 600px) {
-    .navbar__searchox {
-      width: 100px;
-      height: 5vh;
-      font-size: medium;
-      padding: 2%;
-      font-size: 12px;
+    .searchBox {
+        width: 103px;
+        height: 5vh;
+        font-size: medium;
+        padding: 2%;
+        font-size: 12px;
+        cursor: pointer;
     }
-  
-    .nav__dropdown {
-      width: 10vw;
-      height: 5vh;
-      font-size: 12px;
+
+    .searchbox-div{
+        height: 4.9vh;
     }
-    .navbar__searchicon {
+/* 
+    .listy {
+        position: absolute;
+        width: 300px;
+        margin-left: -200px;
+        margin-top: 10px;
+        background-color: white;
+        color: black;
+        border-radius: 5px;
+    } */
+
+    .dropdown {
+        width: 10vw;
+        height: 5vh;
+        font-size: 12px;
+    }
+
+    .searchIcon {
         width: 20px;
         height: 23px;
         margin: 10px;
         cursor: pointer;
     }
-  }
-  @media (min-width: 768px) and (max-width: 1024px) {
 
-    .navbar__searchox {
+    .listy {
+        position: absolute !important;
+        width: 55vw; /* Adjust the width as needed for smaller screens */
+        margin-top: 40px;
+        background-color: white;
+        color: black;
+        border-radius: 5px;
+    }
+    
+    .listy li {
+        color: #000000;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+    .listy li:hover {
+        background-color: #e6e5e5;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .searchBox {
         width: 50vw;
         height: 5vh;
         font-size: medium;
         padding: 2%;
         font-size: 16px;
+        cursor: pointer;
     }
+    .searchbox-div{
+        height: 5vh;
+    }
+    /* .listy {
+        position: absolute;
+        width: 50vw;
+        margin-top: 10px;
+        background-color: white;
+        color: black;
+        border-radius: 5px;
+    } */
 
-    .nav__dropdown {
+    .dropdown {
         width: 9vw;
         height: 5vh;
     }
 
-    .navbar__searchicon {
+    .searchIcon {
         width: 80px;
         height: 25px;
         margin: 10px;
         cursor: pointer;
     }
+
+    .listy {
+        width: 70vw; /* Adjust the width as needed for tablet screens */
+      }
 }
