@@ -1,8 +1,10 @@
 .navbar__component{
     width: 100vw;
-    height: 8vh;
+    height: 9vh;
+    /* height: 60px    ; */
     background-color: #131921;
     display: flex;
+    align-items: center;
     position: fixed;
     top: 0;
     z-index: 1;
@@ -20,14 +22,21 @@
     align-items: center;
     margin-left: 0.5%;
     margin: 15px 0px;
-    margin-right: 20px;
+    margin-right: 15px;
+    margin-left: 10px;
 }
 
-.navbar__location{
+.navbar_location {
     color: white;
     font-weight: bold;
     margin-left: 5px;
+    background-color:#131921 ;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    width: 70px;
 }
+
 .navbar__locatorImage{
     background: url('https://ik.imagekit.io/amazon1122/amazon-image/amazon-image/sprite_350x.png?updatedAt=1689420292626') no-repeat -70px -305px;
 	width: 19px;
@@ -108,12 +117,14 @@ height: 5vh;
 
 
 .navbar__footer{
-    height: 4.7vh;
+    height: 6vh;
+    /* height: 39px; */
     color: white;
     background-color: #22303E;
     display: flex;
     justify-content: space-between;
-    margin-top: 8vh;
+    align-items: center;
+    margin-top: 9vh;
     padding-left: 10px;
 }
 
@@ -187,11 +198,11 @@ align-items: center;
     }
 
     .navbar__signin2{
-        margin-top: 75px;
+        margin-top: 95px;
     }
     .navbar__cart2{
         display: flex;
-margin-top: 40px;
+margin-top: 65px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -229,7 +240,7 @@ margin-top: 40px;
         display:block;
         color: #F08805;
         margin-left: 80px;
-        margin-top: 35px;
+        margin-top: 25px;
     }
     .navbar__language{
         display: none;
@@ -255,12 +266,12 @@ margin-top: 40px;
     }
 
     .navbar__signin2{
-        margin-top: 95px;
+        margin-top: 105px;
         margin-left: 100px;
     }
     .navbar__cart2{
         display: flex;
-    margin-top: 80px;
+    margin-top: 85px;
     margin-left: 100px;
     display: flex;
     justify-content: center;
