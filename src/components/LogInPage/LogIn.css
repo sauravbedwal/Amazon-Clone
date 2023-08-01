@@ -103,13 +103,13 @@ p{
 @media (max-width: 600px) {
     .box_container {
         width: 300px;
-        height: 350px;
+        height: 330px;
         font-size: 12px;
         text-align: center;
     }
     .box_container img {
-        height: 200px;
-        width: 100px;
+        height: 190px;
+        width: 90px;
         width: 90%;
     }
     .box_container button {
