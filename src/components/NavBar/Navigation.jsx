@@ -208,7 +208,7 @@ const NavBar = () => {
             width: "100%",
             backgroundColor: "#131921",
             color: "white",
-            zIndex: "1",
+            zIndex: "0",
           }}
         >
           <div className="navbar__language2">
