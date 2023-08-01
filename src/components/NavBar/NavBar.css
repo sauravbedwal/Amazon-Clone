@@ -174,7 +174,6 @@ align-items: center;
         color: #F08805;
         margin-left: 30px;
         margin-top: 20px;
-	    width: auto;
     }
     .navbar__language{
         display: none;
