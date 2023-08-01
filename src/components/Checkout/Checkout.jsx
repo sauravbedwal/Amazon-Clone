@@ -83,7 +83,7 @@ const Checkout = () => {
             <div style={{ fontSize: "26px" }}>
               Subtotal ({size} items): <strong>{cartValue()}</strong>
             </div>
-            <div style={{ paddingTop: "25px" }}>
+            <div className="placeorder__div">
               <button className="placeorder__button" onClick={onBuyClick}>
                 Proceed to Buy
               </button>
