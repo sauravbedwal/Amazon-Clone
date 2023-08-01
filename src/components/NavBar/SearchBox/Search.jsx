@@ -1,41 +1,42 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./Search.css";
 import { CartContext } from "../../../CartContext";
 import { useNavigate } from "react-router-dom";
+import { List, ListItem } from "@mui/material";
 
 const Search = () => {
   const navigate = useNavigate();
 
-  const { searchProducts } = useContext(CartContext);
-
+  const [type, setType] = useState("");
   const [element, setElement] = useState([]);
 
-  const [type, setType] = useState("");
-
   useEffect(() => {
-    (async () => {
-      const response = await fetch(
+    (async function () {
+      const res = await fetch(
         `https://content.newtonschool.co/v1/pr/63b6c911af4f30335b4b3b89/products`
       );
-      const data = await response.json();
+      const data = await res.json();
       setElement(data);
     })();
   }, []);
 
   const onInputChange = (e) => {
     setType(e.target.value);
-    searchProducts(element, type);
+    // searchProducts(element, type);
   };
-
-  const onClickChange = () => {
+  const onClickChange = (product) => {
+    navigate(`/place-order/${product.id}`);
+    setType("");
+    // searchProducts(element, type);
+  };
+  const onIconClick = () => {
     navigate("/display-content");
-    searchProducts(element, type);
   };
 
   return (
-    <div className="navbar__searchcomponent">
+    <div className="search-component">
       <div className="dropdown-div">
-        <select className="nav__dropdown">
+        <select className="dropdown">
           <option value="All">All</option>
           <option value="Alexa">Alexa</option>
           <option value="Books">Books</option>
@@ -44,18 +45,34 @@ const Search = () => {
           <option value="Clothes">Clothes</option>
         </select>
       </div>
+
       <div>
         <input
-          type="text"
-          className="navbar__searchox"
-          placeholder="  Search Amazon.in"
+          type="search"
+          placeholder="Search amazon.in"
+          className="searchBox"
           value={type}
           onChange={onInputChange}
-          onClick={onClickChange}
+          // onClick={onClickChange}
         />
+        {type && (
+          <List className="listy">
+            {element
+              .filter((product) => product.title.toLowerCase().includes(type))
+              .map((product) => (
+                <ListItem
+                  key={product.id}
+                  onClick={() => onClickChange(product)}
+                >
+                  <div>{product.title}</div>
+                </ListItem>
+              ))}
+          </List>
+        )}
       </div>
-      <div className="navbar__searchboxdiv">
-        <div className="navbar__searchicon" onClick={onClickChange}></div>
+
+      <div className="searchbox-div">
+        <div className="searchIcon" onClick={onIconClick}></div>
       </div>
     </div>
   );
