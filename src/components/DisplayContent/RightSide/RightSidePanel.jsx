@@ -89,15 +89,3 @@ const RightSidePanel = () => {
   );
 };
 export default RightSidePanel;
-
-// filter uncheck and checkfunctionalty and when remove alll the checboxes then all items visible
-// check box click p bhi ho
-// and can we do something by api by editing it liek we did wiht place order with the help of if
-// search functionality api and implementation
-
-// item delte from checkout page how?
-//sign in signout
-
-//hpw to access the value of starclick
-
-// filter in star there is only one item jiska rating whole integer h othwerwise not working on other bvox vaise we did floor but in api it in devimal
