@@ -35,6 +35,7 @@
     font-weight: bold;
     font-size: 16px;
     width: 70px;
+    cursor: pointer;
 }
 
 .navbar__locatorImage{
@@ -55,7 +56,7 @@
 }
 
 .navbar__returns{
-    width: 6vw;
+    width: 7.5vw;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -113,6 +114,7 @@
     border: none;
     width: 3.8vw;
 height: 5vh;
+cursor: pointer;
 }
 
 
