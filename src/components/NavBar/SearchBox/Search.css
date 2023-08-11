@@ -46,6 +46,7 @@
     background-color: #e6e5e5;
     border-radius: 5px 0px 0px 5px;
     text-align-last: center;
+    cursor: pointer;
 }
 
 .listy {
@@ -96,6 +97,7 @@
         width: 10vw;
         height: 5vh;
         font-size: 12px;
+        cursor: pointer;
     }
 
     .searchIcon {
@@ -150,6 +152,7 @@
     .dropdown {
         width: 9vw;
         height: 5vh;
+        cursor: pointer;
     }
 
     .searchIcon {
