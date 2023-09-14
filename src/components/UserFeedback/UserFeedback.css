@@ -1,0 +1,14 @@
+.box_container {
+    width: 580px;
+    height: 440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box_container button {
+    height: 50px;
+    font-weight: bold;
+    font-size: 20px;
+}
