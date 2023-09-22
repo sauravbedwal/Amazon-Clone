@@ -5,10 +5,27 @@ import { useNavigate } from "react-router-dom";
 import Search from "./SearchBox/Search";
 import MenuIcon from "@mui/icons-material/Menu";
 
+import { auth } from "../../firebase";
+
+import Box from "@mui/material/Box";
+import Popper from "@mui/material/Popper";
+
 const NavBar = () => {
   const [phone, setPhone] = useState(false);
-  const { item, size, increment, log } = useContext(CartContext);
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popper" : undefined;
+
+  const { item, size, increment, log, user, setUser } = useContext(CartContext);
   const navigate = useNavigate();
+
+  console.log("userCheck", user);
 
   const cartClick = () => {
     navigate(`/checkout`);
@@ -20,6 +37,10 @@ const NavBar = () => {
 
   const signInClick = () => {
     navigate("/log-In");
+  };
+
+  const feedbackClick = () => {
+    navigate("/userFeedback-page");
   };
   // console.log(log);
   const staticData = [
@@ -59,6 +80,21 @@ const NavBar = () => {
     const value = e.target.getAttribute("value");
     navigate("/static-pages", { state: staticData[value] });
   };
+
+  const handleLogout = () => {
+    auth
+      .signOut()
+      .then(() => {
+        setUser(null);
+        console.log("User logged out successfully!");
+        // Clearing user data from the global state by setting user to null
+      })
+      .catch((error) => {
+        console.error("Error logging out:", error);
+      });
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+
   return (
     <>
       <div className="navbar__component">
@@ -92,19 +128,40 @@ const NavBar = () => {
 
         {/* Text after searchbar */}
         <div className="navbar__text navbar__signin">
+          {user ? (
+            <div onClick={handleClick}>
+              <div style={{ fontSize: "14px" }}>Hello, {user.name}</div>
+              <div style={{ fontWeight: "bold" }}>Account & Lists</div>
+            </div>
+          ) : (
+            <div onClick={handleClick}>
+              <div style={{ fontSize: "14px" }} onClick={signInClick}>
+                Hello, Sign In
+              </div>
+              <div style={{ fontWeight: "bold" }}>Account & Lists</div>
+            </div>
+          )}
+          <Popper
+            id={id}
+            open={open}
+            anchorEl={anchorEl}
+            style={{ zIndex: "2" }}
+            onClick={handleLogout}
+          >
+            <Box sx={{ p: 1 }} className="navbar_logoutButton">
+              Logout
+            </Box>
+          </Popper>
+        </div>
+        {/* <button onClick={handleLogout}>logout</button> */}
+        <div className="navbar__text navbar__returns">
           <div
             style={{ fontSize: "14px", cursor: "pointer" }}
-            onClick={signInClick}
+            onClick={feedbackClick}
           >
-            {log?._tokenResponse?.email
-              ? `Hello, ${log?._tokenResponse?.email}`
-              : "Hello, Sign In"}
+            Feedback
           </div>
-          <div style={{ fontWeight: "bold" }}>Account & Lists</div>
-        </div>
-        <div className="navbar__text navbar__returns">
-          <div style={{ fontSize: "14px" }}>Returns</div>
-          <div style={{ fontWeight: "bold" }}>& Order</div>
+          <div style={{ fontWeight: "bold" }}>& Comment</div>
         </div>
         <div className="navbar__text navbar__cart" onClick={cartClick}>
           <div className="cart__image"></div>
@@ -227,19 +284,31 @@ const NavBar = () => {
 
           {/* Text after searchbar */}
           <div className="navbar__text navbar__signin2">
-            <div
-              style={{ fontSize: "14px", cursor: "pointer" }}
-              onClick={signInClick}
+            {user ? (
+              <div style={{ fontSize: "14px" }} onClick={handleClick}>
+                Hello, {user.name}
+              </div>
+            ) : (
+              <div style={{ fontSize: "14px" }} onClick={signInClick}>
+                Hello, Sign In
+              </div>
+            )}
+            <Popper
+              id={id}
+              open={open}
+              anchorEl={anchorEl}
+              style={{ zIndex: "2" }}
+              onClick={handleLogout}
             >
-              {log?._tokenResponse?.email
-                ? `Hello, ${log?._tokenResponse?.email}`
-                : "Hello, Sign In"}
-            </div>
+              <Box sx={{ p: 1 }} className="navbar_logoutButton">
+                Logout
+              </Box>
+            </Popper>
             <div style={{ fontWeight: "bold" }}>Account & Lists</div>
           </div>
           <div className="navbar__text navbar__returns2">
-            <div style={{ fontSize: "14px" }}>Returns</div>
-            <div style={{ fontWeight: "bold" }}>& Order</div>
+            <div style={{ fontSize: "14px" }}>Feedback</div>
+            <div style={{ fontWeight: "bold" }}>& Comment</div>
           </div>
           <div className="navbar__text navbar__cart2" onClick={cartClick}>
             <div className="cart__image2"></div>

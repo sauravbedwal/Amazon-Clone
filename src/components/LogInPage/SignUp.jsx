@@ -2,20 +2,16 @@ import React, { useContext, useState } from "react";
 import "./LogIn.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
-import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "../../firebase";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { CartContext } from "../../CartContext";
 import Dialog from "@mui/material/Dialog";
 import Box from "@mui/material/Box";
+import db from "../../firebase";
+import { auth } from "../../firebase";
 
 const SignUp = () => {
-  const { setLog } = useContext(CartContext);
   const navigate = useNavigate();
-  const app = initializeApp(firebaseConfig);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const auth = getAuth();
+  const [name, setName] = useState("");
 
   const [open, setOpen] = useState(false);
 
@@ -23,18 +19,41 @@ const SignUp = () => {
     setOpen(false);
   };
 
-  const register = () => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((auth) => {
-        // Signed in
-        if (auth) {
-          setLog(auth);
-          setOpen(true);
-        }
-      })
+  const handleSignup = (e) => {
+    e.preventDefault();
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        db.collection("users")
+          .doc(user.uid)
+          .set({
+            name: name,
+            email: email,
+          })
+          .then(() => {
+            // Handle successful signup
 
-      .catch((error) => alert(error.message));
+            console.log("User signed up successfully!");
+            setOpen(true);
+          })
+          .catch((error) => {
+            // Handle Firestore save error
+            console.error("Error saving user data to Firestore:", error);
+            // You may want to delete the created user from Firebase Authentication here to maintain consistency between Auth and Firestore.
+            user.delete().catch((deleteError) => {
+              console.error("Error deleting user:", deleteError);
+            });
+            alert("Error: " + error);
+          });
+      })
+      .catch((error) => {
+        // Handle signup error
+        console.error("Error creating user:", error);
+        alert("Error: " + error.message);
+      });
   };
+
   return (
     <div className="login">
       <Link to="/">
@@ -45,17 +64,14 @@ const SignUp = () => {
       </Link>
       <div className="login_container">
         <h1>Create Account</h1>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            register();
-          }}
-        >
+        <form>
           <h5>Your name</h5>
           <input
             type="text"
             className="text_color"
             placeholder="First and last name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
           />
           <h5>Email</h5>
@@ -73,11 +89,16 @@ const SignUp = () => {
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            minLength={6}
           />
           <p style={{ fontSize: "14px", marginTop: "-5px" }}>
             <i>Passwords must be at least 6 characters.</i>
           </p>
-          <button type="submit" className="login_signinbutton">
+          <button
+            type="submit"
+            className="login_signinbutton"
+            onClick={handleSignup}
+          >
             Continue
           </button>
           <div>

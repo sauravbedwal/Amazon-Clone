@@ -1,4 +1,4 @@
-.navbar__component{
+.navbar__component {
     width: 100vw;
     height: 9vh;
     /* height: 60px    ; */
@@ -9,10 +9,11 @@
     top: 0;
     z-index: 1;
 }
-.navbar__logo{
+
+.navbar__logo {
     background: url('https://ik.imagekit.io/amazon1122/amazon-image/amazon-image/sprite_350x.png?updatedAt=1689420292626') no-repeat -9px -50px;
-	width: 98px;
-	height: 31px;
+    width: 98px;
+    height: 31px;
     margin: 1%;
     cursor: pointer;
 }
@@ -30,7 +31,7 @@
     color: white;
     font-weight: bold;
     margin-left: 5px;
-    background-color:#131921 ;
+    background-color: #131921;
     border: none;
     font-weight: bold;
     font-size: 16px;
@@ -38,14 +39,14 @@
     cursor: pointer;
 }
 
-.navbar__locatorImage{
+.navbar__locatorImage {
     background: url('https://ik.imagekit.io/amazon1122/amazon-image/amazon-image/sprite_350x.png?updatedAt=1689420292626') no-repeat -70px -305px;
-	width: 19px;
-	height: 22px;
+    width: 19px;
+    height: 22px;
 }
 
 
-.navbar__signin{
+.navbar__signin {
     width: 9vw;
     margin-left: 2%;
     display: flex;
@@ -55,8 +56,8 @@
     cursor: pointer;
 }
 
-.navbar__returns{
-    width: 6vw;
+.navbar__returns {
+    width: 7.5vw;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -64,31 +65,31 @@
     margin-left: 1.5%;
 }
 
-.navbar__cart{
+.navbar__cart {
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
 }
 
-.navbar__text{
+.navbar__text {
     color: white;
 
 }
 
-.cart__image{
+.cart__image {
     background: url('https://ik.imagekit.io/amazon1122/amazon-image/amazon-image/sprite_350x.png?updatedAt=1689420292626') no-repeat -217px -336px;
-	width: 43px;
-	height: 30px;
+    width: 43px;
+    height: 30px;
 }
 
-.navbar__text__cart{
+.navbar__text__cart {
     margin-top: 15%;
     font-weight: bold;
     margin-left: -5px;
 }
 
-.cart__item{
+.cart__item {
     font-weight: bold;
     position: relative;
     left: -22px;
@@ -96,29 +97,29 @@
     color: #F08805;
 }
 
-.navbar__language{
+.navbar__language {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 2%;
 }
 
-.navbar__language img{
+.navbar__language img {
     width: auto;
     height: 1.7vh;
 }
 
-.navbar__language__select{
+.navbar__language__select {
     background-color: #131921;
     color: white;
     border: none;
     width: 3.8vw;
-height: 5vh;
-cursor: pointer;
+    height: 5vh;
+    cursor: pointer;
 }
 
 
-.navbar__footer{
+.navbar__footer {
     height: 6vh;
     /* height: 39px; */
     color: white;
@@ -130,170 +131,204 @@ cursor: pointer;
     padding-left: 10px;
 }
 
-.navbar_footer_elems{
-width: 70%;
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-align-items: center;
+.navbar_footer_elems {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.navbar__footer__text{
+.navbar__footer__text {
     font-size: 14px;
     cursor: pointer;
 }
 
-.navbar__footer__image img{
+.navbar__footer__image img {
     height: 5vh;
 
 }
 
 
 
-.hamburger{
-    display:none;
-}
-.navbar__language2 img{
- display: none;
+.hamburger {
+    display: none;
 }
 
+.navbar__language2 img {
+    display: none;
+}
+
+.navbar_logoutButton {
+    margin-top: 5px;
+    background-color: #FFD712;
+    border-radius: 2px;
+    border: 1px solid;
+    border: 0px;
+    border: 0px;
+    border-radius: 7px;
+    font-size: 15px;
+    cursor: pointer;
+}
 
 @media screen and (max-width: 768px) {
 
- 
-    .navbar__logo{
+
+    .navbar__logo {
         background: url('https://ik.imagekit.io/amazonzlone15/amazon-image/sprite_350x.png?updatedAt=1689420715250') no-repeat -9px -50px;
         width: 98px;
         height: 31px;
-        margin-top: 20px ; 
+        margin-top: 20px;
         cursor: pointer;
     }
 
-    .hamburger{
-        display:block;
+    .hamburger {
+        display: block;
         color: #F08805;
         margin-left: 30px;
         margin-top: 20px;
     }
-    .navbar__language{
-        display: none;
-    }
-    .navbar__cart{
-        display: none;
-    }
-    .navbar__returns{
-        display: none;
-    }
-    .navbar__signin{
-        display: none;
-    }
-    .navbar__locator{
-        display: none;
-    }
-    .navbar__footer{
+
+    .navbar__language {
         display: none;
     }
 
-    .navbar__language2 img{
+    .navbar__cart {
+        display: none;
+    }
+
+    .navbar__returns {
+        display: none;
+    }
+
+    .navbar__signin {
+        display: none;
+    }
+
+    .navbar__locator {
+        display: none;
+    }
+
+    .navbar__footer {
+        display: none;
+    }
+
+    .navbar__language2 img {
         height: 2px;
         width: 2px;
     }
 
-    .navbar__signin2{
+    .navbar__signin2 {
         margin-top: 95px;
     }
-    .navbar__cart2{
+
+    .navbar__cart2 {
         display: flex;
-margin-top: 65px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+        margin-top: 65px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
 
     }
-    .cart__image2{
+
+    .cart__image2 {
         background: url('https://ik.imagekit.io/amazonzlone15/amazon-image/sprite_350x.png?updatedAt=1689420715250') no-repeat -217px -336px;
         width: 43px;
         height: 30px;
     }
-    .cart__item2{
+
+    .cart__item2 {
         font-weight: bold;
         position: relative;
         left: -22px;
         bottom: 5px;
         color: #F08805;
     }
-    .navbar__text__cart2{
+
+    .navbar__text__cart2 {
         font-weight: bold;
         margin-left: -5px;
     }
 }
+
 @media (min-width: 768px) and (max-width: 1024px) {
-    .navbar__logo{
+    .navbar__logo {
         background: url('https://ik.imagekit.io/amazonzlone15/amazon-image/sprite_350x.png?updatedAt=1689420715250') no-repeat -9px -50px;
         width: 98px;
         height: 31px;
-        margin-top: 35px ;
-        margin-left: 20px; 
-       cursor: pointer;
+        margin-top: 35px;
+        margin-left: 20px;
+        cursor: pointer;
     }
 
-    .hamburger{
-        display:block;
+    .hamburger {
+        display: block;
         color: #F08805;
         margin-left: 80px;
         margin-top: 35px;
     }
-    .navbar__language{
+
+    .navbar__language {
         display: none;
     }
-    .navbar__cart{
+
+    .navbar__cart {
         display: none;
     }
-    .navbar__returns{
+
+    .navbar__returns {
         display: none;
     }
-    .navbar__signin{
+
+    .navbar__signin {
         display: none;
     }
-    .navbar__locator{
+
+    .navbar__locator {
         display: none;
     }
-    .navbar__footer{
+
+    .navbar__footer {
         display: none;
     }
-    .navbar__language2 img{
+
+    .navbar__language2 img {
         height: 2px;
         width: 2px;
     }
 
-    .navbar__signin2{
+    .navbar__signin2 {
         margin-top: 105px;
         margin-left: 100px;
     }
-    .navbar__cart2{
+
+    .navbar__cart2 {
         display: flex;
-    margin-top: 85px;
-    margin-left: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+        margin-top: 85px;
+        margin-left: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
 
     }
-    .cart__image2{
+
+    .cart__image2 {
         background: url('https://ik.imagekit.io/amazonzlone15/amazon-image/sprite_350x.png?updatedAt=1689420715250') no-repeat -217px -336px;
         width: 43px;
         height: 30px;
     }
-    .cart__item2{
+
+    .cart__item2 {
         font-weight: bold;
         position: relative;
         left: -22px;
         bottom: 5px;
         color: #F08805;
     }
-    .navbar__text__cart2{
+
+    .navbar__text__cart2 {
         font-weight: bold;
         margin-left: -5px;
     }

@@ -8,7 +8,7 @@ const Product = ({ product }) => {
   // console.log(product);
   const navigate = useNavigate();
   const cardClick = () => {
-    navigate(`/place-order/${product.id}`);
+    navigate(`/place-order/${product.id}`); //going on the url(passing as an url)
   };
   return (
     <div className="product__main" onClick={cardClick}>

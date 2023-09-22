@@ -10,7 +10,7 @@ import Box from "@mui/material/Box";
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const { item, size, increment, price, setPrice, qty, qtyId, log } =
+  const { item, size, increment, price, setPrice, qty, qtyId, log, user } =
     useContext(CartContext);
 
   const cartValue = () => {
@@ -22,7 +22,11 @@ const Checkout = () => {
         }
       }
       total += parseFloat(item[i].price);
+
+      // total += parseFloat(item[i].price * 1.10);
     }
+    // const Formattedtotal = total.toFixed(2);
+    // setPrice((Formattedtotal));
     setPrice(total);
     return price;
   };
@@ -40,7 +44,7 @@ const Checkout = () => {
 
   const onBuyClick = () => {
     if (size !== 0) {
-      if (log?._tokenResponse?.email) {
+      if (user) {
         navigate("/address-page");
       } else {
         setOpen(true);
@@ -82,6 +86,7 @@ const Checkout = () => {
           <div className="proceedToBuyBox">
             <div style={{ fontSize: "26px" }}>
               Subtotal ({size} items): <strong>{cartValue()}</strong>
+              {/* <div style={{fontSize: "20px", marginTop: "5px"}}>GST tax: 10%</div> */}
             </div>
             <div className="placeorder__div">
               <button className="placeorder__button" onClick={onBuyClick}>

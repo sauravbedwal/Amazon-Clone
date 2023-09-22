@@ -28,6 +28,8 @@ const CartContextProvider = (props) => {
 
   const [qtyId, setQtyId] = useState(0);
 
+  const [user, setUser] = useState("");
+
   const increment = (value) => {
     setItem((prevItem) => [...prevItem, value]);
   };
@@ -91,6 +93,8 @@ const CartContextProvider = (props) => {
           quantityItem,
           qty,
           qtyId,
+          user,
+          setUser,
         }}
       >
         {props.children}

@@ -2,20 +2,17 @@ import React, { useContext, useState } from "react";
 import "./LogIn.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
-import { initializeApp } from "firebase/app";
-import { firebaseConfig } from "../../firebase";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { CartContext } from "../../CartContext";
 import Dialog from "@mui/material/Dialog";
 import Box from "@mui/material/Box";
+import { auth } from "../../firebase";
 
 const LogIn = () => {
   const { setLog } = useContext(CartContext);
   const navigate = useNavigate();
-  const app = initializeApp(firebaseConfig);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const auth = getAuth();
+  const [error, setError] = useState("");
 
   const [open, setOpen] = useState(false);
 
@@ -27,19 +24,20 @@ const LogIn = () => {
     setOpen(false);
   };
 
-  const signIn = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((auth) => {
-        // Signed in
+    setError("");
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log("User logged in successfully!");
 
-        if (auth) {
-          setLog(auth);
-          setOpen(true);
-        }
+        setOpen(true);
       })
-
-      .catch((error) => alert(error.message));
+      .catch((error) => {
+        setError("Invalid email or password. Please try again."); // Display login error
+        alert("Error logging in:", error);
+      });
   };
 
   const register = () => {
@@ -73,7 +71,11 @@ const LogIn = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit" className="login_signinbutton" onClick={signIn}>
+          <button
+            type="submit"
+            className="login_signinbutton"
+            onClick={handleLogin}
+          >
             Sign In
           </button>
         </form>

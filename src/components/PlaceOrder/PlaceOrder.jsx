@@ -13,7 +13,7 @@ const PlaceOrder = (props) => {
   const { item, size, increment } = useContext(CartContext);
   const [productInfo, setProductInfo] = useState({});
   const params = useParams();
-  // console.log(params);
+  // console.log(params);                   //taking the id from url by using useParams
 
   useEffect(() => {
     const fetchData = async () => {
