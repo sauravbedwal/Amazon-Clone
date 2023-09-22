@@ -134,10 +134,8 @@ const NavBar = () => {
               <div style={{ fontWeight: "bold" }}>Account & Lists</div>
             </div>
           ) : (
-            <div onClick={handleClick}>
-              <div style={{ fontSize: "14px" }} onClick={signInClick}>
-                Hello, Sign In
-              </div>
+            <div onClick={signInClick}>
+              <div style={{ fontSize: "14px" }}>Hello, Sign In</div>
               <div style={{ fontWeight: "bold" }}>Account & Lists</div>
             </div>
           )}
@@ -285,26 +283,16 @@ const NavBar = () => {
           {/* Text after searchbar */}
           <div className="navbar__text navbar__signin2">
             {user ? (
-              <div style={{ fontSize: "14px" }} onClick={handleClick}>
-                Hello, {user.name}
+              <div onClick={handleClick}>
+                <div style={{ fontSize: "14px" }}>Hello, {user.name}</div>
+                <div style={{ fontWeight: "bold" }}>Account & Lists</div>
               </div>
             ) : (
-              <div style={{ fontSize: "14px" }} onClick={signInClick}>
-                Hello, Sign In
+              <div onClick={signInClick}>
+                <div style={{ fontSize: "14px" }}>Hello, Sign In</div>
+                <div style={{ fontWeight: "bold" }}>Account & Lists</div>
               </div>
             )}
-            <Popper
-              id={id}
-              open={open}
-              anchorEl={anchorEl}
-              style={{ zIndex: "2" }}
-              onClick={handleLogout}
-            >
-              <Box sx={{ p: 1 }} className="navbar_logoutButton">
-                Logout
-              </Box>
-            </Popper>
-            <div style={{ fontWeight: "bold" }}>Account & Lists</div>
           </div>
           <div className="navbar__text navbar__returns2">
             <div style={{ fontSize: "14px" }}>Feedback</div>
