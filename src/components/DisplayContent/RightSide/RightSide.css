@@ -1,4 +1,4 @@
-.RightSide__main{
+.rightSide_main{
     height: 100%;
     width: 99%;
     display: flex;
@@ -63,7 +63,7 @@
 
 /* For screens with a width of 768 pixels or less (mobile devices) */
 @media (max-width: 768px) {
-    .RightSide__main {
+    .rightSide_main {
       /* Adjust the layout to make products stack in a single column */
       display: flex;
       flex-direction: column;
@@ -103,7 +103,7 @@
   
   /* For screens with a width between 768px and 1024px (tablet devices) */
   @media (min-width: 768px) and (max-width: 1024px) {
-    .RightSide__main {
+    .rightSide_main {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;

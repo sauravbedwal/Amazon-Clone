@@ -4,17 +4,23 @@ import { CartContext } from "../../CartContext";
 import { useNavigate } from "react-router-dom";
 
 const CheckoutItems = ({ product }) => {
-  const { decrement, quantityItem } = useContext(CartContext);
+  const { decrement, qtyId, quantityItem, qtyInfo } = useContext(CartContext);
 
-  const navigate = useNavigate();
+  // const onDeleteItem = (value) => {
+  //   decrement(value);
+  // };
 
-  const onDeleteItem = () => {
-    decrement(product);
+  const itemQtyInfo = qtyInfo.find((info) => info.id === product.id);
+
+  const qty = itemQtyInfo ? itemQtyInfo.qty : 1;
+
+  const onDeleteItem = (value) => {
+    decrement(value);
   };
 
   const onSelectClick = (e) => {
-    const number = e.target.value;
-    quantityItem(product.id, number);
+    const selectedQuantity = parseInt(e.target.value);
+    quantityItem(product.id, selectedQuantity);
   };
 
   return (
@@ -23,7 +29,7 @@ const CheckoutItems = ({ product }) => {
         style={{
           border: "1px solid #E7E7E7",
           width: "95%",
-          height: "280px",
+          height: "250px",
           margin: "25px",
           display: "flex",
         }}
@@ -38,55 +44,57 @@ const CheckoutItems = ({ product }) => {
           }}
         >
           <img
+            src={product.image}
             style={{
               maxWidth: "100%",
               maxHeight: "100%",
               display: "block",
               margin: "0 auto",
             }}
-            src={product.image}
           />
         </div>
-
         <div style={{ marginTop: "20px" }}>
           <div style={{ fontSize: "20px" }} className="textgap">
             {product.title}
           </div>
           <div style={{ fontWeight: "bold" }} className="textgap">
-            ₹{product.price}
+            ₹ {product.price}
           </div>
-          <div
-            className="textgap"
-            style={{ color: "#007600", fontSize: "20px" }}
-          >
+          <div className="textgap" style={{ color: "green" }}>
             In Stock
           </div>
-          <div className="delivery_item">
+          <div className="textgap delivery_item">
             <img
               src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/trust_icon_free_shipping_81px._CB630870460_.png"
               height="30px"
             />
-            <p style={{ fontSize: "12px" }}>Free Delivery</p>
+            <p style={{ fontSize: "12px", color: "gray" }}>Amazon Delivered</p>
           </div>
-          <div className="textgap delivery_item" style={{ fontSize: "13px" }}>
-            <b>FREE</b> Delivery by Amazon
+          <div style={{ fontSize: "12px" }} className="textgap delivery_item">
+            Eligible for <b style={{ margin: "0 4px 0 4px" }}>FREE</b> Shipping
           </div>
-          <div className="textgap dropdown_items" style={{ marginTop: "20px" }}>
-            <select className="checkout_dropdown" onClick={onSelectClick}>
-              <option>Qty: 1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10+</option>
+
+          <div className="textgap dropdown_items" style={{ marginTop: "10px" }}>
+            <select
+              placeholder="Qty."
+              className="checkout_dropdown"
+              onChange={onSelectClick}
+              value={qty}
+            >
+              <option value={1}>Qty : 1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+              <option value={5}>5</option>
+              <option value={6}>6</option>
+              <option value={7}>7</option>
+              <option value={8}>8</option>
+              <option value={9}>9</option>
+              <option value={10}>10</option>
             </select>
             <span style={{ marginLeft: "15px" }}>|</span>
             <button
-              className="checkout__buttons"
+              className="checkout_buttons"
               onClick={() => {
                 onDeleteItem(product);
               }}
@@ -94,14 +102,7 @@ const CheckoutItems = ({ product }) => {
               Delete
             </button>
             <span style={{ marginLeft: "10px" }}>|</span>
-            <button
-              className="checkout__buttons"
-              onClick={() => {
-                navigate("/display-content");
-              }}
-            >
-              See more like this
-            </button>
+            <button className="checkout_buttons">See more like this</button>
           </div>
         </div>
       </div>

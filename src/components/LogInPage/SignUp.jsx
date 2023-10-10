@@ -12,11 +12,13 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); // State to control the success modal
+  const [errorModalOpen, setErrorModalOpen] = useState(false); // State to control the error modal
+  const [errorMessage, setErrorMessage] = useState(""); // State to store the error message
 
   const handleClose = () => {
     setOpen(false);
+    setErrorModalOpen(false);
   };
 
   const handleSignup = (e) => {
@@ -33,24 +35,21 @@ const SignUp = () => {
           })
           .then(() => {
             // Handle successful signup
-
             console.log("User signed up successfully!");
-            setOpen(true);
+            setOpen(true); // Show success modal
           })
           .catch((error) => {
             // Handle Firestore save error
             console.error("Error saving user data to Firestore:", error);
-            // You may want to delete the created user from Firebase Authentication here to maintain consistency between Auth and Firestore.
-            user.delete().catch((deleteError) => {
-              console.error("Error deleting user:", deleteError);
-            });
-            alert("Error: " + error);
+            setErrorMessage("Error saving user data. Please try again.");
+            setErrorModalOpen(true); // Show error modal
           });
       })
       .catch((error) => {
         // Handle signup error
         console.error("Error creating user:", error);
-        alert("Error: " + error.message);
+        setErrorMessage(error.message); // Set the error message
+        setErrorModalOpen(true); // Show error modal
       });
   };
 
@@ -101,34 +100,7 @@ const SignUp = () => {
           >
             Continue
           </button>
-          <div>
-            {/* <Button variant="outlined" onClick={handleOpen}>
-            Open Dialog
-          </Button> */}
-            <Dialog open={open} onClose={handleClose}>
-              <Box component="span" sx={{ p: 2 }} className="box_container">
-                <img
-                  src="https://cdn.dribbble.com/users/2185205/screenshots/7886140/02-lottie-tick-01-instant-2.gif"
-                  height="250"
-                />
-                <h1>Account Created Successfully!</h1>
-                <br />
-                <br />
-                <button
-                  className="login_signinbutton"
-                  onClick={() => {
-                    handleClose();
-                    navigate("/");
-                  }}
-                  autoFocus
-                >
-                  Continue to Amazon
-                </button>
-              </Box>
-            </Dialog>
-          </div>
         </form>
-
         <p>
           Already have an account? <Link to="/log-In">Sign in</Link>
         </p>
@@ -137,6 +109,52 @@ const SignUp = () => {
           of Use and Privacy Policy.
         </p>
       </div>
+
+      {/* Success Modal */}
+      <Dialog open={open} onClose={handleClose}>
+        <Box component="span" sx={{ p: 2 }} className="box_container">
+          <img
+            src="https://cdn.dribbble.com/users/2185205/screenshots/7886140/02-lottie-tick-01-instant-2.gif"
+            height="250"
+          />
+          <h1>Account Created Successfully!</h1>
+          <br />
+          <br />
+          <button
+            className="login_signinbutton"
+            onClick={() => {
+              handleClose();
+              navigate("/");
+            }}
+            autoFocus
+          >
+            Continue to Amazon
+          </button>
+        </Box>
+      </Dialog>
+
+      {/* Error Modal */}
+      <Dialog open={errorModalOpen} onClose={handleClose}>
+        <Box component="span" sx={{ p: 2 }} className="box_container">
+          {/* Error modal content */}
+          <img
+            src="https://cdn.dribbble.com/users/2469324/screenshots/6538803/comp_3.gif"
+            height="250"
+          />
+          <h1>Error Signing Up</h1>
+          <p>{errorMessage}</p>
+          <br />
+          <button
+            className="login_signinbutton"
+            onClick={() => {
+              handleClose();
+            }}
+            autoFocus
+          >
+            OK
+          </button>
+        </Box>
+      </Dialog>
     </div>
   );
 };

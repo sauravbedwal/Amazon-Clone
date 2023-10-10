@@ -2,7 +2,7 @@ import React from "react";
 import "./Checkout.css";
 import { Grid } from "@mui/material";
 import CheckoutItems from "./CheckoutItems";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { CartContext } from "../../CartContext";
 import { useNavigate } from "react-router-dom";
 import Dialog from "@mui/material/Dialog";
@@ -10,42 +10,59 @@ import Box from "@mui/material/Box";
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const { item, size, increment, price, setPrice, qty, qtyId, log, user } =
-    useContext(CartContext);
+  const {
+    item,
+    size,
+    increment,
+    price,
+    setPrice,
+    qty,
+    qtyId,
+    log,
+    setItem,
+    qtyInfo,
+    quantityItem,
+    user,
+    setQtyInfo,
+  } = useContext(CartContext);
 
-  const cartValue = () => {
-    let total = 0;
-    for (let i = 0; i < item.length; i++) {
-      for (let j = 1; j < qty; j++) {
-        if (parseFloat(item[i].id) == qtyId) {
-          total += parseFloat(item[i].price);
-        }
-      }
-      total += parseFloat(item[i].price);
-
-      // total += parseFloat(item[i].price * 1.10);
-    }
-    // const Formattedtotal = total.toFixed(2);
-    // setPrice((Formattedtotal));
-    setPrice(total);
-    return price;
-  };
-
-  // console.log("item", item);
   const [open, setOpen] = useState(false);
 
-  // const handleOpen = () => {
-  //   setOpen(true);
-  // };
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   const handleClose = () => {
     setOpen(false);
   };
 
-  const onBuyClick = () => {
+  const cartValue = () => {
+    let total = 0;
+    for (let i = 0; i < item.length; i++) {
+      const itemQtyInfo = qtyInfo.find((info) => info.id === item[i].id);
+
+      const quantity = itemQtyInfo ? itemQtyInfo.qty : 1;
+      total += parseFloat(item[i].price) * quantity;
+    }
+    setPrice(total.toFixed(2));
+    return total.toFixed(2);
+  };
+
+  useEffect(() => {
+    const storedQtyInfo = JSON.parse(localStorage.getItem("qtyInfo")) || [];
+    setQtyInfo(storedQtyInfo);
+  }, [setQtyInfo]);
+
+  // console.log("total", price);
+  // console.log("id", qtyId);
+  // console.log("qty", qty);
+  // console.log("item", item.id);
+  // console.log("item", item);
+
+  const onProceedClick = () => {
     if (size !== 0) {
       if (user) {
-        navigate("/address-page");
+        navigate("/address-info");
       } else {
         setOpen(true);
       }
@@ -54,8 +71,11 @@ const Checkout = () => {
     }
   };
 
+  const onDeleteAllClick = () => {
+    setItem([]);
+  };
   return (
-    <div className="checkout__body">
+    <div className="body">
       <Grid container>
         <Grid item={10}>
           <div className="checkout__container">
@@ -76,7 +96,7 @@ const Checkout = () => {
                   <h1 style={{ textAlign: "center", padding: "10px" }}>
                     Your Amazon Cart is empty
                   </h1>
-                  <img src="https://ik.imagekit.io/amazon1122/amazon-image/amazon-image/emptyPage.svg?updatedAt=1690178215114" />
+                  <img src="https://ik.imagekit.io/amazonzlone15/amazon-image/empty.svg?updatedAt=1690177984467" />
                 </div>
               )}
             </div>
@@ -84,28 +104,53 @@ const Checkout = () => {
         </Grid>
         <Grid item={2}>
           <div className="proceedToBuyBox">
-            <div style={{ fontSize: "26px" }}>
-              Subtotal ({size} items): <strong>{cartValue()}</strong>
-              {/* <div style={{fontSize: "20px", marginTop: "5px"}}>GST tax: 10%</div> */}
+            <div style={{ fontSize: "26px", textAlign: "initial" }}>
+              <span style={{ display: "flex", alignItems: "center" }}>
+                {" "}
+                Subtotal - {size} items
+              </span>
+              <span
+                style={{
+                  marginTop: "5px",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                {/* {localStorage.getItem("setPrice")} */}
+                <span style={{ fontSize: "medium" }}>Total Amount - </span>
+                <strong style={{ marginLeft: "5px" }}>₹ {cartValue()}</strong>
+              </span>
             </div>
-            <div className="placeorder__div">
-              <button className="placeorder__button" onClick={onBuyClick}>
+            <div style={{ paddingTop: "25px" }}>
+              {/* <Link to="/address-info"> */}
+              <button className="placeorder__button" onClick={onProceedClick}>
                 Proceed to Buy
+              </button>
+              {/* </Link> */}
+              <button className="placeorder__button" onClick={onDeleteAllClick}>
+                Clear All
               </button>
             </div>
           </div>
         </Grid>
       </Grid>
       <div>
+        {/* <Button variant="outlined" onClick={handleOpen}>
+            Open Dialog
+          </Button> */}
         <Dialog open={open} onClose={handleClose}>
-          <Box component="span" sx={{ p: 2 }} className="box_container">
+          <Box
+            component="span"
+            sx={{
+              p: 2,
+            }}
+            className="box_container"
+          >
             <img
               src="https://cdn.dribbble.com/users/2469324/screenshots/6538803/comp_3.gif"
-              height="200"
+              height="300px"
             />
-            <h1>Login Error</h1>
-            <br />
-            <h3>You need to login first</h3>
+            <h1>You need to Login first</h1>
             <br />
             <br />
             <button
@@ -115,6 +160,7 @@ const Checkout = () => {
                 navigate("/log-In");
               }}
               autoFocus
+              sx={{ fontSize: "30px" }}
             >
               Continue to Login
             </button>

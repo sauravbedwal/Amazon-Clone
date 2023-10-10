@@ -12,31 +12,28 @@ const LogIn = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
-  const [open, setOpen] = useState(false);
-
-  // const handleOpen = () => {
-  //   setOpen(true);
-  // };
+  const [loginError, setLoginError] = useState("");
+  const [successModalOpen, setSuccessModalOpen] = useState(false);
+  const [errorModalOpen, setErrorModalOpen] = useState(false);
 
   const handleClose = () => {
-    setOpen(false);
+    setSuccessModalOpen(false);
+    setErrorModalOpen(false);
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    setError("");
+    setLoginError("");
     auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
+        setSuccessModalOpen(true);
         console.log("User logged in successfully!");
-
-        setOpen(true);
       })
       .catch((error) => {
-        setError("Invalid email or password. Please try again."); // Display login error
-        alert("Error logging in:", error);
+        setLoginError("Invalid email or password. Please try again.");
+        setErrorModalOpen(true);
+        console.error("Error logging in", error);
       });
   };
 
@@ -50,6 +47,7 @@ const LogIn = () => {
         <img
           className="login_logo"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/603px-Amazon_logo.svg.png?20220213013322"
+          alt="Amazon Logo"
         />
       </Link>
       <div className="login_container">
@@ -80,17 +78,21 @@ const LogIn = () => {
           </button>
         </form>
         <p>
-          By signing-in you agree to the Amazon Clone condition of use and sale
+          By signing in, you agree to the Amazon Clone conditions of use and
+          sale
         </p>
         <button className="login_registerbutton" onClick={register}>
           Create your Amazon account
         </button>
-        <div>
-          <Dialog open={open} onClose={handleClose}>
-            <Box component="span" sx={{ p: 2 }} className="box_container">
+      </div>
+      <Dialog open={successModalOpen || errorModalOpen} onClose={handleClose}>
+        <Box component="span" sx={{ p: 2 }} className="box_container">
+          {successModalOpen && (
+            <>
               <img
                 src="https://cdn.dribbble.com/users/2185205/screenshots/7886140/02-lottie-tick-01-instant-2.gif"
                 height="250"
+                alt="Success GIF"
               />
               <h1>Logged In successfully</h1>
               <br />
@@ -105,10 +107,31 @@ const LogIn = () => {
               >
                 Continue to Amazon
               </button>
-            </Box>
-          </Dialog>
-        </div>
-      </div>
+            </>
+          )}
+          {errorModalOpen && (
+            <>
+              {/* Error modal content */}
+              <img
+                src="https://cdn.dribbble.com/users/2469324/screenshots/6538803/comp_3.gif"
+                height="250"
+              />
+              <h1>Error Logging In</h1>
+              <p>{loginError}</p>
+              <br />
+              <button
+                className="login_signinbutton"
+                onClick={() => {
+                  handleClose();
+                }}
+                autoFocus
+              >
+                OK
+              </button>
+            </>
+          )}
+        </Box>
+      </Dialog>
     </div>
   );
 };
