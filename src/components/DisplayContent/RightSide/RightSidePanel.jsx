@@ -162,7 +162,9 @@ const RightSidePanel = () => {
           shape="rounded"
           onClick={clicked}
           sx={{
+            display: "flex",
             justifyContent: "center",
+            paddingBottom: "40px",
           }}
         />
       </Stack>
